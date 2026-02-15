@@ -114,6 +114,8 @@ if [ ! -f "$CONFIG_FILE" ]; then
         AUTH_ARGS="--auth-choice apiKey --anthropic-api-key $ANTHROPIC_API_KEY"
     elif [ -n "$OPENAI_API_KEY" ]; then
         AUTH_ARGS="--auth-choice openai-api-key --openai-api-key $OPENAI_API_KEY"
+    elif [ -n "$GEMINI_API_KEY" ]; then
+        AUTH_ARGS="--auth-choice gemini-api-key --gemini-api-key $GEMINI_API_KEY"
     fi
 
     openclaw onboard --non-interactive --accept-risk \
@@ -158,6 +160,15 @@ config.channels = config.channels || {};
 config.gateway.port = 18789;
 config.gateway.mode = 'local';
 config.gateway.trustedProxies = ['10.1.0.0'];
+
+// Gemini provider config
+if (process.env.GEMINI_API_KEY) {
+    config.providers = config.providers || {};
+    config.providers.gemini = {
+        apiKey: process.env.GEMINI_API_KEY,
+        ...(process.env.GEMINI_BASE_URL ? { baseUrl: process.env.GEMINI_BASE_URL } : {}),
+    };
+}
 
 if (process.env.OPENCLAW_GATEWAY_TOKEN) {
     config.gateway.auth = config.gateway.auth || {};

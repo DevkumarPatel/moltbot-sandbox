@@ -187,7 +187,8 @@ The startup script selects the auth choice based on which env vars are set:
 1. **Cloudflare AI Gateway** (native): `CLOUDFLARE_AI_GATEWAY_API_KEY` + `CF_AI_GATEWAY_ACCOUNT_ID` + `CF_AI_GATEWAY_GATEWAY_ID`
 2. **Direct Anthropic**: `ANTHROPIC_API_KEY` (optionally with `ANTHROPIC_BASE_URL`)
 3. **Direct OpenAI**: `OPENAI_API_KEY`
-4. **Legacy AI Gateway**: `AI_GATEWAY_API_KEY` + `AI_GATEWAY_BASE_URL` (routes through Anthropic base URL)
+4. **Direct Gemini**: `GEMINI_API_KEY` (optionally with `GEMINI_BASE_URL`)
+5. **Legacy AI Gateway**: `AI_GATEWAY_API_KEY` + `AI_GATEWAY_BASE_URL` (routes through Anthropic base URL)
 
 ### Container Environment Variables
 
@@ -197,6 +198,8 @@ These are the env vars passed TO the container (internal names):
 |----------|-------------|-------|
 | `ANTHROPIC_API_KEY` | (env var) | OpenClaw reads directly from env |
 | `OPENAI_API_KEY` | (env var) | OpenClaw reads directly from env |
+| `GEMINI_API_KEY` | (env var) | OpenClaw reads directly from env |
+| `GEMINI_BASE_URL` | (env var) | Optional: Custom Gemini API endpoint |
 | `CLOUDFLARE_AI_GATEWAY_API_KEY` | (env var) | Native AI Gateway key |
 | `CF_AI_GATEWAY_ACCOUNT_ID` | (env var) | Account ID for AI Gateway |
 | `CF_AI_GATEWAY_GATEWAY_ID` | (env var) | Gateway ID for AI Gateway |

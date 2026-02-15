@@ -10,6 +10,9 @@ export function buildEnvVars(env: MoltbotEnv): Record<string, string> {
   const envVars: Record<string, string> = {};
 
   // Cloudflare AI Gateway configuration (new native provider)
+  // Gemini API configuration
+  if (env.GEMINI_API_KEY) envVars.GEMINI_API_KEY = env.GEMINI_API_KEY;
+  if (env.GEMINI_BASE_URL) envVars.GEMINI_BASE_URL = env.GEMINI_BASE_URL;
   if (env.CLOUDFLARE_AI_GATEWAY_API_KEY) {
     envVars.CLOUDFLARE_AI_GATEWAY_API_KEY = env.CLOUDFLARE_AI_GATEWAY_API_KEY;
   }
