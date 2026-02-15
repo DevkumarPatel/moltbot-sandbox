@@ -127,7 +127,18 @@ app.use('*', async (c, next) => {
   const url = new URL(c.req.url);
   const redactedSearch = redactSensitiveParams(url);
   console.log(`[REQ] ${c.req.method} ${url.pathname}${redactedSearch}`);
-  console.log(`[REQ] Has ANTHROPIC_API_KEY: ${!!c.env.ANTHROPIC_API_KEY}`);
+  
+  // Log which AI providers are configured
+  const providers = [];
+  if (c.env.ANTHROPIC_API_KEY) providers.push('Anthropic');
+  if (c.env.OPENAI_API_KEY) providers.push('OpenAI');
+  if (c.env.GEMINI_API_KEY) providers.push('Gemini');
+  if (c.env.CLOUDFLARE_AI_GATEWAY_API_KEY && c.env.CF_AI_GATEWAY_ACCOUNT_ID && c.env.CF_AI_GATEWAY_GATEWAY_ID) {
+    providers.push('CF AI Gateway');
+  }
+  if (c.env.AI_GATEWAY_API_KEY && c.env.AI_GATEWAY_BASE_URL) providers.push('Legacy Gateway');
+  console.log(`[REQ] AI Providers: ${providers.length > 0 ? providers.join(', ') : 'NONE'}`);
+  
   console.log(`[REQ] DEV_MODE: ${c.env.DEV_MODE}`);
   console.log(`[REQ] DEBUG_ROUTES: ${c.env.DEBUG_ROUTES}`);
   await next();
