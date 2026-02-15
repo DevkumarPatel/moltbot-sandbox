@@ -7,9 +7,6 @@ export interface MoltbotEnv {
   Sandbox: DurableObjectNamespace<Sandbox>;
   ASSETS: Fetcher; // Assets binding for admin UI static files
   MOLTBOT_BUCKET: R2Bucket; // R2 bucket for persistent storage
-  // Gemini API configuration
-  GEMINI_API_KEY?: string; // Gemini API key for Google Gemini
-  GEMINI_BASE_URL?: string; // Optional: Gemini API base URL
   // Cloudflare AI Gateway configuration (preferred)
   CF_AI_GATEWAY_ACCOUNT_ID?: string; // Cloudflare account ID for AI Gateway
   CF_AI_GATEWAY_GATEWAY_ID?: string; // AI Gateway ID

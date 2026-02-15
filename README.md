@@ -11,11 +11,7 @@ Run [OpenClaw](https://github.com/openclaw/openclaw) (formerly Moltbot, formerly
 ## Requirements
 
 - [Workers Paid plan](https://www.cloudflare.com/plans/developer-platform/) ($5 USD/month) — required for Cloudflare Sandbox containers
-- AI Provider API key — choose one:
-  - [Anthropic API key](https://console.anthropic.com/) for Claude
-  - [OpenAI API key](https://platform.openai.com/api-keys) for GPT models
-  - [Google Gemini API key](https://aistudio.google.com/apikey) for Gemini models
-  - Or use AI Gateway's [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/)
+- [Anthropic API key](https://console.anthropic.com/) — for Claude access, or you can use AI Gateway's [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/)
 
 The following Cloudflare features used by this project have free tiers:
 - Cloudflare Access (authentication)
@@ -66,17 +62,10 @@ _Cloudflare Sandboxes are available on the [Workers Paid plan](https://dash.clou
 # Install dependencies
 npm install
 
-# Set your AI provider API key (choose one):
-# Option 1: Anthropic (Claude)
+# Set your API key (direct Anthropic access)
 npx wrangler secret put ANTHROPIC_API_KEY
 
-# Option 2: Google Gemini
-# npx wrangler secret put GEMINI_API_KEY
-
-# Option 3: OpenAI (GPT)
-# npx wrangler secret put OPENAI_API_KEY
-
-# Option 4: Cloudflare AI Gateway (see "Optional: Cloudflare AI Gateway" below)
+# Or use Cloudflare AI Gateway instead (see "Optional: Cloudflare AI Gateway" below)
 # npx wrangler secret put CLOUDFLARE_AI_GATEWAY_API_KEY
 # npx wrangler secret put CF_AI_GATEWAY_ACCOUNT_ID
 # npx wrangler secret put CF_AI_GATEWAY_GATEWAY_ID
@@ -429,9 +418,7 @@ The previous `AI_GATEWAY_API_KEY` + `AI_GATEWAY_BASE_URL` approach is still supp
 | `CF_AI_GATEWAY_MODEL` | No | Override default model: `provider/model-id` (e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`). See [Choosing a Model](#choosing-a-model) |
 | `ANTHROPIC_API_KEY` | Yes* | Direct Anthropic API key (alternative to AI Gateway) |
 | `ANTHROPIC_BASE_URL` | No | Direct Anthropic API base URL |
-| `OPENAI_API_KEY` | Yes* | OpenAI API key (alternative provider) |
-| `GEMINI_API_KEY` | Yes* | Google Gemini API key (alternative provider) |
-| `GEMINI_BASE_URL` | No | Optional: Gemini API base URL |
+| `OPENAI_API_KEY` | No | OpenAI API key (alternative provider) |
 | `AI_GATEWAY_API_KEY` | No | Legacy AI Gateway API key (deprecated, use `CLOUDFLARE_AI_GATEWAY_API_KEY` instead) |
 | `AI_GATEWAY_BASE_URL` | No | Legacy AI Gateway endpoint URL (deprecated) |
 | `CF_ACCESS_TEAM_DOMAIN` | Yes* | Cloudflare Access team domain (required for admin UI) |
