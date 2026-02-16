@@ -127,7 +127,7 @@ if [ ! -f "$CONFIG_FILE" ]; then
         --skip-skills \
         --skip-health
 
-    echo "Onboard completed"
+    echo "Onboard completed "
 else
     echo "Using existing config"
 fi
