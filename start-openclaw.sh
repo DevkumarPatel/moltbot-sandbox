@@ -105,7 +105,9 @@ if [ ! -f "$CONFIG_FILE" ]; then
     echo "No existing config found, running openclaw onboard..."
 
     AUTH_ARGS=""
-    if [ -n "$CLOUDFLARE_AI_GATEWAY_API_KEY" ] && [ -n "$CF_AI_GATEWAY_ACCOUNT_ID" ] && [ -n "$CF_AI_GATEWAY_GATEWAY_ID" ]; then
+    if [ -n "$GEMINI_API_KEY" ]; then
+        AUTH_ARGS="--auth-choice gemini-api-key --gemini-api-key  $GEMINI_API_KEY"
+    elif [ -n "$CLOUDFLARE_AI_GATEWAY_API_KEY" ] && [ -n "$CF_AI_GATEWAY_ACCOUNT_ID" ] && [ -n "$CF_AI_GATEWAY_GATEWAY_ID" ]; then
         AUTH_ARGS="--auth-choice cloudflare-ai-gateway-api-key \
             --cloudflare-ai-gateway-account-id $CF_AI_GATEWAY_ACCOUNT_ID \
             --cloudflare-ai-gateway-gateway-id $CF_AI_GATEWAY_GATEWAY_ID \

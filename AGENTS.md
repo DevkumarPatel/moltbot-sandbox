@@ -196,6 +196,7 @@ These are the env vars passed TO the container (internal names):
 | Variable | Config Path | Notes |
 |----------|-------------|-------|
 | `ANTHROPIC_API_KEY` | (env var) | OpenClaw reads directly from env |
+| `GEMINI_API_KEY` | (env var) | OpenClaw reads directly from env
 | `OPENAI_API_KEY` | (env var) | OpenClaw reads directly from env |
 | `CLOUDFLARE_AI_GATEWAY_API_KEY` | (env var) | Native AI Gateway key |
 | `CF_AI_GATEWAY_ACCOUNT_ID` | (env var) | Account ID for AI Gateway |
